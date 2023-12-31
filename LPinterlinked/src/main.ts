@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { PredatorCapComponent } from './app/shared/components/predator-cap/predator-cap.component';
 
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(PredatorCapComponent, appConfig)
   .catch((err) => console.error(err));
