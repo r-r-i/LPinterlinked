@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+p {
+    margin: 0;
+}
+
 .predator-badge-container {
     display: flex;
     justify-content: center;
     margin-top: 70px;
+    margin: auto;
 }
 
 .predator-badge {
     width: 150px;
     height: 150px;
+    margin-top: 25px;
     /* Credit to: https://www.reddit.com/r/apexlegends/comments/e6d0i0/made_a_cool_logo_for_predator_hope_you_guys_like/ */
     background-image: url('../../../../assets/images/predator-badge.gif');
     background-size: contain;
@@ -19,11 +25,37 @@
 .countdown-container {
     display: flex;
     justify-content: center;
-    margin: auto;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .countdown-text {
     font-family: 'Bebas Neue', sans-serif;
     color: grey;
     font-size: 50px;
+}
+
+.predator-cap-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.predator-cap-header-text {
+    font-size: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: grey;
+    text-align: center;
+}
+
+.input-container {
+    z-index: 99;
+    position: absolute;
+    left: 2%;
+}
+
+.icon {
+    color: #fff;
+    margin: 15px;
 }

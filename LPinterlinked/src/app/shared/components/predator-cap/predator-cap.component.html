@@ -9,3 +9,30 @@
         </div>
     </div>
 </div>
+
+<div class="predator-cap-header-container">
+    <div class="predator-cap-header-text" *ngIf="isPc">
+        <p>{{predatorData.RP.PC.val | number}} LP</p>
+        <p>{{predatorData.RP.PC.totalMastersAndPreds | number}} masters and preds</p>
+    </div>
+    <div class="predator-cap-header-text" *ngIf="isXbox">
+        <p>{{predatorData.RP.X1.val | number}} LP</p>
+        <p>{{predatorData.RP.X1.totalMastersAndPreds | number}} masters and preds</p>
+    </div>
+    <div class="predator-cap-header-text" *ngIf="isPlaystation">
+        <p>{{predatorData.RP.PS4.val | number}} LP</p>
+        <p>{{predatorData.RP.PS4.totalMastersAndPreds | number}} masters and preds</p>
+    </div>
+</div>
+
+<div class="input-container">
+    <div class="icon">
+        <fa-icon (click)="inputIsPc()" [icon]="faDesktop"></fa-icon>
+    </div>
+    <div class="icon">
+        <fa-icon (click)="inputIsPlaystation()" [icon]="faPlaystation"></fa-icon>
+    </div>
+    <div class="icon">
+        <fa-icon (click)="inputIsXbox()" [icon]="faXbox"></fa-icon>
+    </div>
+</div>
