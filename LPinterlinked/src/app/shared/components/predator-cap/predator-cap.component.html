@@ -1,2 +1,11 @@
-<p>{{countdown}}</p>
-<p>{{daysLeft}}</p>
+<div class="predator-badge-container">
+    <div class="predator-badge"></div>
+</div>
+
+<div *ngIf="predatorData">
+    <div class="countdown-container">
+        <div class="countdown-text">
+            <p>{{countdown}}</p>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ApexDataService } from '../../services/apex-data.service';
 import { IPredatorCaps } from '../../types/predator-cap.model';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-predator-cap',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, CommonModule],
   templateUrl: './predator-cap.component.html',
   styleUrl: './predator-cap.component.css'
 })
@@ -33,7 +33,7 @@ export class PredatorCapComponent {
     // var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
     // var seconds = Math.floor((distance % (1000*60)) / 1000);
 
-    this.countdown = days + "D" + hours + "H";
+    this.countdown = days + "D" + " " + hours + "H";
   })
 
   private initPredatorCap() {
