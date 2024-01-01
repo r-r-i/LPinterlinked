@@ -17,8 +17,8 @@ export class PredatorCapComponent {
   predatorData: IPredatorCaps;
 
   isPc: boolean = true;
-  isXbox: boolean;
   isPlaystation: boolean;
+  isXbox: boolean;
   faDesktop = faDesktop;
   faPlaystation = faPlaystation;
   faXbox = faXbox;
@@ -49,16 +49,12 @@ export class PredatorCapComponent {
     this.isPc = true;
     this.isXbox = false;
     this.isPlaystation = false;
-
-    console.log(this.isPc, this.isPlaystation, this.isXbox)
   }
 
   public inputIsXbox() {
     this.isPc = false;
     this.isXbox = true;
     this.isPlaystation = false;
-
-    console.log(this.isPc, this.isPlaystation, this.isXbox)
   }
 
   public inputIsPlaystation() {

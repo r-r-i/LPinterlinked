@@ -25,14 +25,15 @@
     </div>
 </div>
 
+
 <div class="input-container">
-    <div class="icon">
+    <div class="icon" [ngStyle]="{'color': isPc === true ? 'red' : 'grey'}">
         <fa-icon (click)="inputIsPc()" [icon]="faDesktop"></fa-icon>
     </div>
-    <div class="icon">
+    <div class="icon" [ngStyle]="{'color': isPlaystation === true ? 'red' : 'grey'}">
         <fa-icon (click)="inputIsPlaystation()" [icon]="faPlaystation"></fa-icon>
     </div>
-    <div class="icon">
+    <div class="icon" [ngStyle]="{'color': isXbox === true ? 'red' : 'grey'}">
         <fa-icon (click)="inputIsXbox()" [icon]="faXbox"></fa-icon>
     </div>
 </div>

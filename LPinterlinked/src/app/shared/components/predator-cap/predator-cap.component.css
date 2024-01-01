@@ -56,6 +56,16 @@ p {
 }
 
 .icon {
+    margin: 15px;
+    font-size: 17.5px;
+    cursor: pointer;
+}
+
+fa-icon:hover {
     color: #fff;
+}
+
+.buttonActive {
+    color: blue;
     margin: 15px;
 }
