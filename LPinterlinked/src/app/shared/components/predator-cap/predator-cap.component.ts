@@ -13,9 +13,11 @@ import { faPlaystation, faXbox } from '@fortawesome/free-brands-svg-icons';
   templateUrl: './predator-cap.component.html',
   styleUrl: './predator-cap.component.css'
 })
-export class PredatorCapComponent {   
+export class PredatorCapComponent {
+  // API data variables 
   predatorData: IPredatorCaps;
 
+  // Input variables
   isPc: boolean = true;
   isPlaystation: boolean;
   isXbox: boolean;
@@ -23,6 +25,7 @@ export class PredatorCapComponent {
   faPlaystation = faPlaystation;
   faXbox = faXbox;
 
+  // End of season variables
   seasonEndDate = new Date("february 13, 2024 15:00:00").getTime();
   daysUntilSeasonEnd: number;
   countdown: any;
@@ -43,7 +46,7 @@ export class PredatorCapComponent {
 
     this.daysUntilSeasonEnd = days;
     this.countdown = days + "D" + " " + hours + "H";
-  })
+  },0)
 
   public inputIsPc() {
     this.isPc = true;
