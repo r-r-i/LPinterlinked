@@ -14,14 +14,20 @@
         <div class="predator-cap-header-text" *ngIf="isPc">
             <p>{{predatorData.RP.PC.val | number}} LP</p>
             <p>{{predatorData.RP.PC.totalMastersAndPreds | number}} masters and preds</p>
-        </div>
-        <div class="predator-cap-header-text" *ngIf="isXbox">
-            <p>{{predatorData.RP.X1.val | number}} LP</p>
-            <p>{{predatorData.RP.X1.totalMastersAndPreds | number}} masters and preds</p>
+            <br>
+            <p class="predicted-end">Predator will end at : <span class="end-cap">{{pcPredictedEndLp | number: '1.0-0'}}</span></p>
         </div>
         <div class="predator-cap-header-text" *ngIf="isPlaystation">
             <p>{{predatorData.RP.PS4.val | number}} LP</p>
             <p>{{predatorData.RP.PS4.totalMastersAndPreds | number}} masters and preds</p>
+            <br>
+            <p class="predicted-end">Predator will end at : <span class="end-cap">{{playstationPredictedEndLp | number :'1.0-0'}}</span></p>
+        </div>
+        <div class="predator-cap-header-text" *ngIf="isXbox">
+            <p>{{predatorData.RP.X1.val | number}} LP</p>
+            <p>{{predatorData.RP.X1.totalMastersAndPreds | number}} masters and preds</p>
+            <br>
+            <p class="predicted-end">Predator will end at : <span class="end-cap">{{xboxPredictedEndLp | number: '1.0-0'}}</span></p>
         </div>
     </div>
 </div>
@@ -30,12 +36,12 @@
 
 <div class="input-container">
     <div class="icon" [ngStyle]="{'color': isPc === true ? 'red' : 'grey'}">
-        <fa-icon (click)="inputIsPc()" [icon]="faDesktop"></fa-icon>
+        <fa-icon (click)="inputChange(1)" [icon]="faDesktop"></fa-icon>
     </div>
     <div class="icon" [ngStyle]="{'color': isPlaystation === true ? 'red' : 'grey'}">
-        <fa-icon (click)="inputIsPlaystation()" [icon]="faPlaystation"></fa-icon>
+        <fa-icon (click)="inputChange(2)" [icon]="faPlaystation"></fa-icon>
     </div>
     <div class="icon" [ngStyle]="{'color': isXbox === true ? 'red' : 'grey'}">
-        <fa-icon (click)="inputIsXbox()" [icon]="faXbox"></fa-icon>
+        <fa-icon (click)="inputChange(3)" [icon]="faXbox"></fa-icon>
     </div>
 </div>

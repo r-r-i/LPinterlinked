@@ -49,6 +49,14 @@ p {
     text-align: center;
 }
 
+.predicted-end {
+    color: #fff;
+}
+
+.end-cap {
+    color: red;
+}
+
 .input-container {
     z-index: 99;
     position: absolute;

@@ -28,7 +28,17 @@ export class PredatorCapComponent {
   // End of season variables
   seasonEndDate = new Date("february 13, 2024 15:00:00").getTime();
   daysUntilSeasonEnd: number;
+  seasonLengthInDays: number = 105;
   countdown: any;
+
+  // Predicted end LP variables
+  pcPredictedEndLp: number;
+  xboxPredictedEndLp: number;
+  playstationPredictedEndLp: number;
+
+  // TODO: User's LP
+  userLp: number;
+  userRequiredLp: number;
 
   constructor(private apexDataService: ApexDataService) {}
 
@@ -46,24 +56,41 @@ export class PredatorCapComponent {
 
     this.daysUntilSeasonEnd = days;
     this.countdown = days + "D" + " " + hours + "H";
-  },0)
+  })
 
-  public inputIsPc() {
-    this.isPc = true;
-    this.isXbox = false;
-    this.isPlaystation = false;
+  public inputChange(input: number) {
+    if (input === 1) {
+      this.isPc = true;
+      this.isXbox = false;
+      this.isPlaystation = false;
+    } else if (input === 2) {
+      this.isPc = false;
+      this.isXbox = false;
+      this.isPlaystation = true;
+    } else if (input === 3) {
+      this.isPc = false;
+      this.isXbox = true;
+      this.isPlaystation = false;
+    }
   }
 
-  public inputIsXbox() {
-    this.isPc = false;
-    this.isXbox = true;
-    this.isPlaystation = false;
+  // Initialise predicted end cap variables
+  private initPredictedPc(predatorData: IPredatorCaps) {
+    var daysPast = this.seasonLengthInDays - this.daysUntilSeasonEnd;
+    var averageLpIncreasePerDay = predatorData.RP.PC.val / daysPast;
+    this.pcPredictedEndLp = averageLpIncreasePerDay * this.seasonLengthInDays;
   }
 
-  public inputIsPlaystation() {
-    this.isPc = false;
-    this.isXbox = false;
-    this.isPlaystation = true;
+  private initPredictedPlaystation(predatorData: IPredatorCaps) {
+    var daysPast = this.seasonLengthInDays - this.daysUntilSeasonEnd;
+    var averageLpIncreasePerDay = predatorData.RP.PS4.val / daysPast;
+    this.playstationPredictedEndLp = averageLpIncreasePerDay * this.seasonLengthInDays;
+  }
+
+  private initPredictedXbox(predatorData: IPredatorCaps) {
+    var daysPast = this.seasonLengthInDays - this.daysUntilSeasonEnd;
+    var averageLpIncreasePerDay = predatorData.RP.X1.val / daysPast;
+    this.xboxPredictedEndLp = averageLpIncreasePerDay * this.seasonLengthInDays;
   }
 
   private initPredatorCap() {
@@ -72,6 +99,9 @@ export class PredatorCapComponent {
     .subscribe((predatorCap: IPredatorCaps) => {
       this.predatorData = predatorCap;
       console.log(this.predatorData);
+      this.initPredictedPc(this.predatorData);
+      this.initPredictedPlaystation(this.predatorData);
+      this.initPredictedXbox(this.predatorData);
     });
   }
 
