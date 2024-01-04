@@ -1,15 +1,26 @@
+// Components
 import { Component } from '@angular/core';
+// Services
 import { ApexDataService } from '../../services/apex-data.service';
-import { IPredatorCaps } from '../../types/predator-cap.model';
-import { CommonModule, DatePipe } from '@angular/common';
+// Modules
+import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule, DatePipe } from '@angular/common';
+// Models
+import { IPredatorCaps } from '../../types/predator-cap.model';
+// Icons
 import { faDesktop } from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation, faXbox } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-predator-cap',
   standalone: true,
-  imports: [DatePipe, CommonModule, FontAwesomeModule],
+  imports: [
+    DatePipe, 
+    CommonModule, 
+    FontAwesomeModule, 
+    FormsModule,
+  ],
   templateUrl: './predator-cap.component.html',
   styleUrl: './predator-cap.component.css'
 })
@@ -36,7 +47,7 @@ export class PredatorCapComponent {
   xboxPredictedEndLp: number;
   playstationPredictedEndLp: number;
 
-  // TODO: User's LP
+  // User's LP variables
   userLpRequiredTotal: number;
   userLpRequiredPerDay: number;
   userIsSafe: boolean;
@@ -47,19 +58,26 @@ export class PredatorCapComponent {
     this.initPredatorCap();
   }
 
+  // Reset form input and user summary on selected input change
+  private clearForm() {
+    (<HTMLFormElement>document.getElementById("userLpForm")).reset();
+    this.userLpRequiredTotal = NaN;
+  }
+
+  // Timer countdown to season end date
   x = setInterval(() => {
     var now = new Date().getTime();
     var distance = this.seasonEndDate - now;
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    // var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    // var seconds = Math.floor((distance % (1000*60)) / 1000);
 
     this.daysUntilSeasonEnd = days;
     this.countdown = days + "D" + " " + hours + "H";
   })
 
+  // Change data shown based on user's selected input
   public inputChange(input: number) {
+    this.clearForm();
     if (input === 1) {
       this.isPc = true;
       this.isXbox = false;
@@ -96,14 +114,26 @@ export class PredatorCapComponent {
 
   // Initialise User's current LP
   public initUserLp() {
+    this.userIsSafe = false;
     let currentUserLp = parseFloat((<HTMLInputElement>document.getElementById("userLpValue")).value);
     if (this.isPc === true) {
+      if (currentUserLp > this.pcPredictedEndLp) {
+        this.userIsSafe = true;
+      }
       this.userLpRequiredTotal = this.pcPredictedEndLp - currentUserLp;
       this.userLpRequiredPerDay = this.userLpRequiredTotal / this.daysUntilSeasonEnd;
-    } else if (this.isPlaystation === true) {
+    }
+    else if (this.isPlaystation === true) {
+      if (currentUserLp > this.playstationPredictedEndLp) {
+        this.userIsSafe = true;
+      }
       this.userLpRequiredTotal = this.playstationPredictedEndLp - currentUserLp;
       this.userLpRequiredPerDay = this.userLpRequiredTotal / this.daysUntilSeasonEnd;
-    } else if (this.isXbox === true) {
+    }
+    else if (this.isXbox === true) {
+      if (currentUserLp > this.xboxPredictedEndLp) {
+        this.userIsSafe = true;
+      }
       this.userLpRequiredTotal = this.xboxPredictedEndLp - currentUserLp;
       this.userLpRequiredPerDay = this.userLpRequiredTotal / this.daysUntilSeasonEnd;
     }
@@ -120,8 +150,5 @@ export class PredatorCapComponent {
         this.initPredictedXbox(this.predatorData);
       });
   }
-
-
-
 
 }

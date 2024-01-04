@@ -173,3 +173,16 @@ input:focus~.bar:after {
     width: 50%;
     color: #FFF;
 }
+
+.predicted-lp-container {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+    width: 400px;
+    color: grey;
+}
+
+.lp {
+    color: #FFF;
+}

@@ -9,6 +9,7 @@
         </div>
     </div>
 </div>
+
 <div *ngIf="predatorData">
     <div class="predator-cap-header-container">
         <div class="predator-cap-header-text" *ngIf="isPc">
@@ -48,7 +49,7 @@
 </div>
 
 <div class="container">
-    <form (keydown.enter)="$event.preventDefault()">
+    <form id="userLpForm" (keydown.enter)="$event.preventDefault()">
         <div class="group">
             <input id="userLpValue" type="text" (blur)="initUserLp()" autocomplete="off" required>
             <span class="bar"></span>
@@ -57,7 +58,15 @@
     </form>
 </div>
 
-<div *ngIf="userLpRequiredTotal">
-    <h1>REQUIRED LP GOES HERE {{userLpRequiredTotal | number: '1.0-0'}}</h1>
-    <h1>Required per day: {{userLpRequiredPerDay | number: '1.0-0'}}</h1>
+<div *ngIf="userLpRequiredTotal && userIsSafe === false" class="predicted-lp-container">
+    <div>
+        <p>In order to end the season as an Apex Predator you need <span class="end-cap">{{userLpRequiredTotal | number:
+                '1.0-0'}} </span><span class="lp">LP</span> , at an average of <span
+                class="end-cap">{{userLpRequiredPerDay | number: '1.0-0'}} </span><span class="lp">LP</span> per day.
+        </p>
+    </div>
+</div>
+
+<div *ngIf="userLpRequiredTotal && userIsSafe === true" class="predicted-lp-container">
+    <p>YOU ARE SAFE!</p>
 </div>
