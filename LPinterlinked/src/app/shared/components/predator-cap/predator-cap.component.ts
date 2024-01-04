@@ -37,20 +37,21 @@ export class PredatorCapComponent {
   playstationPredictedEndLp: number;
 
   // TODO: User's LP
-  userLp: number;
-  userRequiredLp: number;
+  userLpRequiredTotal: number;
+  userLpRequiredPerDay: number;
+  userIsSafe: boolean;
 
-  constructor(private apexDataService: ApexDataService) {}
+  constructor(private apexDataService: ApexDataService) { }
 
   ngOnInit(): void {
     this.initPredatorCap();
-  } 
+  }
 
   x = setInterval(() => {
     var now = new Date().getTime();
     var distance = this.seasonEndDate - now;
-    var days = Math.floor(distance / (1000*60*60*24));
-    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     // var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
     // var seconds = Math.floor((distance % (1000*60)) / 1000);
 
@@ -93,19 +94,34 @@ export class PredatorCapComponent {
     this.xboxPredictedEndLp = averageLpIncreasePerDay * this.seasonLengthInDays;
   }
 
-  private initPredatorCap() {
-    this.apexDataService
-    .getPredatorCap()
-    .subscribe((predatorCap: IPredatorCaps) => {
-      this.predatorData = predatorCap;
-      console.log(this.predatorData);
-      this.initPredictedPc(this.predatorData);
-      this.initPredictedPlaystation(this.predatorData);
-      this.initPredictedXbox(this.predatorData);
-    });
+  // Initialise User's current LP
+  public initUserLp() {
+    let currentUserLp = parseFloat((<HTMLInputElement>document.getElementById("userLpValue")).value);
+    if (this.isPc === true) {
+      this.userLpRequiredTotal = this.pcPredictedEndLp - currentUserLp;
+      this.userLpRequiredPerDay = this.userLpRequiredTotal / this.daysUntilSeasonEnd;
+    } else if (this.isPlaystation === true) {
+      this.userLpRequiredTotal = this.playstationPredictedEndLp - currentUserLp;
+      this.userLpRequiredPerDay = this.userLpRequiredTotal / this.daysUntilSeasonEnd;
+    } else if (this.isXbox === true) {
+      this.userLpRequiredTotal = this.xboxPredictedEndLp - currentUserLp;
+      this.userLpRequiredPerDay = this.userLpRequiredTotal / this.daysUntilSeasonEnd;
+    }
   }
 
-  
+  private initPredatorCap() {
+    this.apexDataService
+      .getPredatorCap()
+      .subscribe((predatorCap: IPredatorCaps) => {
+        this.predatorData = predatorCap;
+        console.log(this.predatorData);
+        this.initPredictedPc(this.predatorData);
+        this.initPredictedPlaystation(this.predatorData);
+        this.initPredictedXbox(this.predatorData);
+      });
+  }
+
+
 
 
 }

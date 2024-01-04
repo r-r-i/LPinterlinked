@@ -48,11 +48,16 @@
 </div>
 
 <div class="container">
-    <form>
+    <form (keydown.enter)="$event.preventDefault()">
         <div class="group">
-            <input type="text" required>
+            <input id="userLpValue" type="text" (blur)="initUserLp()" autocomplete="off" required>
             <span class="bar"></span>
             <label>Current LP</label>
         </div>
     </form>
+</div>
+
+<div *ngIf="userLpRequiredTotal">
+    <h1>REQUIRED LP GOES HERE {{userLpRequiredTotal | number: '1.0-0'}}</h1>
+    <h1>Required per day: {{userLpRequiredPerDay | number: '1.0-0'}}</h1>
 </div>
