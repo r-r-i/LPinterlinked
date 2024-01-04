@@ -175,14 +175,36 @@ input:focus~.bar:after {
 }
 
 .predicted-lp-container {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 25px;
     text-align: center;
     margin: auto;
     width: 400px;
     color: grey;
 }
 
+.predicted-lp-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
+}
+
+.predicted-lp-text-warning {
+    font-family: monospace;
+    font-size: 8px;
+}
+
 .lp {
     color: #FFF;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 2.5%;
+    width: 100%;
+}
+
+.footer-icon {
+    margin: 5px;
+    cursor: pointer;
+    color: grey;
 }

@@ -59,14 +59,28 @@
 </div>
 
 <div *ngIf="userLpRequiredTotal && userIsSafe === false" class="predicted-lp-container">
-    <div>
+    <div class="predicted-lp-text">
         <p>In order to end the season as an Apex Predator you need <span class="end-cap">{{userLpRequiredTotal | number:
                 '1.0-0'}} </span><span class="lp">LP</span> , at an average of <span
                 class="end-cap">{{userLpRequiredPerDay | number: '1.0-0'}} </span><span class="lp">LP</span> per day.
         </p>
     </div>
+    <br>
+    <div class="predicted-lp-text-warning">
+        <p>Note that these values are only predictions as the predator end cap is impossible to know ahead of time.</p>
+    </div>
 </div>
 
 <div *ngIf="userLpRequiredTotal && userIsSafe === true" class="predicted-lp-container">
     <p>YOU ARE SAFE!</p>
+</div>
+
+<div id="footer">
+    <a class="footer-icon" href="https://discordapp.com/users/196181619185418241" target="_blank">
+        <fa-icon [icon]="faDiscord"></fa-icon>
+    </a>
+    <a class="footer-icon" href="https://twitter.com/B_rayke" target="_blank">
+        <fa-icon [icon]="faTwitter"></fa-icon>
+    </a>
+
 </div>

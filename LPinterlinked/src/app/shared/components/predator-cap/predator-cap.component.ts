@@ -10,7 +10,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { IPredatorCaps } from '../../types/predator-cap.model';
 // Icons
 import { faDesktop } from '@fortawesome/free-solid-svg-icons';
-import { faPlaystation, faXbox } from '@fortawesome/free-brands-svg-icons';
+import { faPlaystation, faXbox, faDiscord, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-predator-cap',
@@ -32,9 +32,13 @@ export class PredatorCapComponent {
   isPc: boolean = true;
   isPlaystation: boolean;
   isXbox: boolean;
+  
+  // Icons
   faDesktop = faDesktop;
   faPlaystation = faPlaystation;
   faXbox = faXbox;
+  faDiscord = faDiscord;
+  faTwitter = faTwitter;
 
   // End of season variables
   seasonEndDate = new Date("february 13, 2024 15:00:00").getTime();
