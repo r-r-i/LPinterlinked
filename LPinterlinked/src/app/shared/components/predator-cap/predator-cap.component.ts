@@ -41,7 +41,7 @@ export class PredatorCapComponent {
   faTwitter = faTwitter;
 
   // End of season variables
-  seasonEndDate = new Date("february 13, 2024 15:00:00").getTime();
+  seasonEndDate = new Date("may 8, 2024 05:30:00").getTime();
   daysUntilSeasonEnd: number;
   seasonLengthInDays: number = 105;
   countdown: any;

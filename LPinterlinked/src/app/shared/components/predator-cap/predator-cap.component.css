@@ -11,21 +11,15 @@ p {
     margin: auto;
 }
 
-.predator-badge {
-    width: 150px;
-    height: 150px;
-    margin-top: 25px;
-    /* Credit to: https://www.reddit.com/r/apexlegends/comments/e6d0i0/made_a_cool_logo_for_predator_hope_you_guys_like/ */
-    background-image: url('../../../../assets/images/predator-badge.gif');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .countdown-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
+}
+
+img {
+    width: 150px;
     margin-top: 50px;
 }
 
