@@ -53,16 +53,19 @@
 <div class="container">
     <form id="userLpForm" (keydown.enter)="$event.preventDefault()">
         <div class="group">
-            <input id="userLpValue" type="text" (blur)="initUserLp()" autocomplete="off" required>
+            <input id="userLpValue" type="text" autocomplete="off" required>
             <span class="bar"></span>
             <label>Current LP</label>
+            <div>
+                <button (click)="initUserLp()" class="rp-button">send</button>
+            </div>
         </div>
     </form>
 </div>
 
 <div *ngIf="userLpRequiredTotal && userIsSafe === false" class="predicted-lp-container">
     <div class="predicted-lp-text">
-        <p>In order to end the season as an Apex Predator you need <span class="end-cap">{{userLpRequiredTotal | number:
+        <p>In order to end the split as an Apex Predator you need <span class="end-cap">{{userLpRequiredTotal | number:
                 '1.0-0'}} </span><span class="lp">LP</span> , at an average of <span
                 class="end-cap">{{userLpRequiredPerDay | number: '1.0-0'}} </span><span class="lp">LP</span> per day.
         </p>

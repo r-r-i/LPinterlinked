@@ -67,11 +67,6 @@ fa-icon:hover {
     color: #fff;
 }
 
-.buttonActive {
-    color: blue;
-    margin: 15px;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -159,6 +154,22 @@ input:valid~label {
 
 .bar:after {
     right: 50%;
+}
+
+.rp-button {
+    color: grey;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+.rp-button:hover {
+    color: white;
+    border: 1px solid grey;
 }
 
 /* active state */
